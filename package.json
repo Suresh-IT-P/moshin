@@ -1,0 +1,65 @@
+{
+  "name": "meetminder",
+  "productName": "MeetMinder",
+  "version": "1.0.0",
+  "description": "Record customer meetings, mark the moments that matter and never miss a follow-up.",
+  "main": "electron/main.js",
+  "private": true,
+  "author": "MeetMinder",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "zip:mac": "node scripts/make-mac-zip.js"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.meetminder.app",
+    "productName": "MeetMinder",
+    "copyright": "Copyright © 2026 MeetMinder",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "css/**/*",
+      "js/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "MeetMinder needs the microphone to record your meetings.",
+        "NSDocumentsFolderUsageDescription": "MeetMinder saves your meeting recordings in Documents/MeetMinder."
+      }
+    },
+    "dmg": {
+      "title": "MeetMinder",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": "nsis"
+    }
+  }
+}

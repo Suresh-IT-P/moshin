@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' file:; style-src 'self' 'unsafe-inline' file:; img-src 'self' data: blob: file:; media-src 'self' file: blob: mediastream:; connect-src 'self' file: blob:; font-src 'self' data: file:"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MeetMinder</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-drag"></div>
+        <div class="brand">
+          <div class="brand-logo" data-icon="logo"></div>
+          <div class="brand-text">
+            <strong>MeetMinder</strong>
+            <span>Meetings &amp; follow-ups</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Main">
+          <span class="nav-label">Workspace</span>
+          <button class="nav-item" data-nav="dashboard">
+            <span class="nav-icon" data-icon="dashboard"></span>
+            <span>Dashboard</span>
+            <span class="nav-badge nav-badge-alert" id="nav-badge-dashboard" hidden></span>
+          </button>
+          <button class="nav-item" data-nav="meetings">
+            <span class="nav-icon" data-icon="mic"></span>
+            <span>Meetings</span>
+            <span class="nav-badge" id="nav-badge-meetings" hidden></span>
+          </button>
+        </nav>
+
+        <div class="sidebar-fill"></div>
+
+        <button class="sidebar-rec" id="sidebar-rec" data-action="open-recorder" hidden>
+          <span class="rec-dot"></span>
+          <span class="sidebar-rec-text">
+            <strong>Recording</strong>
+            <span data-rec-timer>00:00</span>
+          </span>
+          <span class="sidebar-rec-open" data-icon="maximize"></span>
+        </button>
+
+        <div class="storage-card">
+          <div class="storage-head">
+            <span class="storage-icon" data-icon="folder"></span>
+            <strong>Recordings folder</strong>
+          </div>
+          <p class="storage-path" id="storage-path" title=""></p>
+          <button class="btn btn-soft btn-sm btn-block" data-action="open-folder">
+            <span data-icon="folder-open"></span> Open folder
+          </button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-title">
+            <h1 id="page-title"></h1>
+            <p id="page-subtitle"></p>
+          </div>
+          <div class="topbar-actions" id="page-actions"></div>
+        </header>
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+
+    <div id="layer-root"></div>
+    <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
